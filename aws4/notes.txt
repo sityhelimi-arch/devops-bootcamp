@@ -1,0 +1,12 @@
+[
+    [
+        "nat-0b4feb5d0115e171c",
+        "available"
+    ]
+]
+[
+    "3.1.254.52"
+]
+[
+    "223681698881.dkr.ecr.ap-southeast-1.amazonaws.com/devops-bootcamp/sity"
+]
