@@ -1,0 +1,3 @@
+web: citrusy.my
+tunnel: devop-cloudflare2
+ssl-mode: Flexible
