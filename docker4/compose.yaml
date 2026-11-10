@@ -1,0 +1,34 @@
+services:
+  profile:
+    image: redis:alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - me:/data
+
+  server:
+    image: ghcr.io/infratify/arena-server:latest
+
+  avatar:
+    image: ghcr.io/infratify/arena-avatar:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - COLOR=cyan
+      - SERVER=server:3000
+    depends_on:
+      - server
+      - profile
+
+  avatar2:
+    image: ghcr.io/infratify/arena-avatar:latest
+    ports:
+      - "8081:8080"
+    environment:
+      - COLOR=magenta
+      - SERVER=server:3000
+    depends_on:
+      - server
+      - profile
+
+volumes:
+  me:
