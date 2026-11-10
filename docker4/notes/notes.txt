@@ -1,0 +1,134 @@
+docker compose up -d # hidupkan seluruh arena
+docker compose down # padam semua; volume me kekal
+NAME                IMAGE                                   COMMAND                  SERVICE   CREATED              STATUS              PORTS
+docker4-avatar-1    ghcr.io/infratify/arena-avatar:latest   "docker-entrypoint.s…"   avatar    8 minutes ago        Up 4 minutes        0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+docker4-avatar2-1   ghcr.io/infratify/arena-avatar:latest   "docker-entrypoint.s…"   avatar2   About a minute ago   Up About a minute   0.0.0.0:8081->8080/tcp, [::]:8081->8080/tcp
+docker4-profile-1   redis:alpine                            "docker-entrypoint.s…"   profile   8 minutes ago        Up 8 minutes        6379/tcp
+docker4-server-1    ghcr.io/infratify/arena-server:latest   "docker-entrypoint.s…"   server    8 minutes ago        Up 8 minutes        3000/tcp
+avatar2-1  | [arena] avatar view: http://localhost:8080
+server-1   | [arena] room listening on :3000
+profile-1  | Starting Redis Server
+avatar-1   | [arena] No "nama" in your remember-box yet. Set one with:
+profile-1  | 1:C 10 Nov 2026 16:44:35.619 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+avatar-1   |   docker exec profile redis-cli SET nama "YourName"
+profile-1  | 1:C 10 Nov 2026 16:44:35.619 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+profile-1  | 1:C 10 Nov 2026 16:44:35.619 * Redis version=8.10.3, bits=64, commit=00000000, modified=1, pid=1, just started
+profile-1  | 1:C 10 Nov 2026 16:44:35.619 * Configuration loaded
+profile-1  | 1:M 10 Nov 2026 16:44:35.619 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+profile-1  | 1:M 10 Nov 2026 16:44:35.619 * monotonic clock: POSIX clock_gettime
+profile-1  | 1:M 10 Nov 2026 16:44:35.622 * Running mode=standalone, port=6379.
+profile-1  | 1:M 10 Nov 2026 16:44:35.625 * <bf> RedisBloom version 8.10.1 (Git=unknown)
+profile-1  | 1:M 10 Nov 2026 16:44:35.625 * <bf> Registering configuration options: [
+profile-1  | 1:M 10 Nov 2026 16:44:35.625 * <bf> 	{ bf-error-rate       :      0.01 }
+profile-1  | 1:M 10 Nov 2026 16:44:35.625 * <bf> 	{ bf-initial-size     :       100 }
+profile-1  | 1:M 10 Nov 2026 16:44:35.625 * <bf> 	{ bf-expansion-factor :         2 }
+profile-1  | 1:M 10 Nov 2026 16:44:35.625 * <bf> 	{ cf-bucket-size      :         2 }
+profile-1  | 1:M 10 Nov 2026 16:44:35.625 * <bf> 	{ cf-initial-size     :      1024 }
+profile-1  | 1:M 10 Nov 2026 16:44:35.625 * <bf> 	{ cf-max-iterations   :        20 }
+profile-1  | 1:M 10 Nov 2026 16:44:35.625 * <bf> 	{ cf-expansion-factor :         1 }
+avatar-1   | [arena] avatar view: http://localhost:8080
+avatar-1   | [arena] avatar view: http://localhost:8080
+profile-1  | 1:M 10 Nov 2026 16:44:35.625 * <bf> 	{ cf-max-expansions   :        32 }
+profile-1  | 1:M 10 Nov 2026 16:44:35.625 * <bf> ]
+profile-1  | 1:M 10 Nov 2026 16:44:35.626 * Module 'bf' loaded from /usr/local/lib/redis/modules//redisbloom.so
+profile-1  | 1:M 10 Nov 2026 16:44:35.682 * <search> search-workers default: 12 (min of MAX_WORKER_THREADS=16 and CPU cores)
+profile-1  | 1:M 10 Nov 2026 16:44:35.682 * <search> Redis version found by RedisSearch : 8.10.3 - oss
+profile-1  | 1:M 10 Nov 2026 16:44:35.682 * <search> RediSearch version 8.10.1 (Git=)
+profile-1  | 1:M 10 Nov 2026 16:44:35.682 * <search> gc: ON, prefix min length: 2, min word length to stem: 4, prefix max expansions: 200, query timeout (ms): 500, timeout policy: return, oom policy: return, cursor read size: 1000, cursor max idle (ms): 300000, max doctable size: 1000000, max number of search results:  1000000, default scorer: BM25STD, 
+profile-1  | 1:M 10 Nov 2026 16:44:35.682 * <search> Initialized thread pools!
+profile-1  | 1:M 10 Nov 2026 16:44:35.682 * <search> Enabled workers threadpool of size 12
+profile-1  | 1:M 10 Nov 2026 16:44:35.682 * <search> Subscribe to config changes
+profile-1  | 1:M 10 Nov 2026 16:44:35.682 * <search> Subscribe to cluster slot migration events
+profile-1  | 1:M 10 Nov 2026 16:44:35.682 * <search> Subscribe to cluster topology change events
+profile-1  | 1:M 10 Nov 2026 16:44:35.682 * <search> Enabled role change notification
+profile-1  | 1:M 10 Nov 2026 16:44:35.683 * <search> Cluster configuration: AUTO partitions, type: 0, coordinator timeout: 0ms
+profile-1  | 1:M 10 Nov 2026 16:44:35.683 * Module 'search' loaded from /usr/local/lib/redis/modules//redisearch.so
+profile-1  | 1:M 10 Nov 2026 16:44:35.693 * <timeseries> RedisTimeSeries version 81001, git_sha=
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> Redis version found by RedisTimeSeries : 8.10.3 - oss
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> Registering configuration options: [
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> 	{ ts-compaction-policy   :              }
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> 	{ ts-num-threads         :            3 }
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> 	{ ts-libmr-protocol      :     INTERNAL }
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> 	{ ts-retention-policy    :            0 }
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> 	{ ts-duplicate-policy    :        block }
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> 	{ ts-chunk-size-bytes    :         4096 }
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> 	{ ts-encoding            :   compressed }
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> 	{ ts-ignore-max-time-diff:            0 }
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> 	{ ts-ignore-max-val-diff :     0.000000 }
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> 	{ ts-topology-events     :         true }
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> ]
+profile-1  | 1:M 10 Nov 2026 16:44:35.694 * <timeseries> Detected redis oss (cluster-enabled=no)
+profile-1  | 1:M 10 Nov 2026 16:44:35.695 * <timeseries> Subscribe to ASM events
+profile-1  | 1:M 10 Nov 2026 16:44:35.695 * <timeseries> Subscribe to topology changes events
+profile-1  | 1:M 10 Nov 2026 16:44:35.695 * <timeseries> Enabled diskless replication
+profile-1  | 1:M 10 Nov 2026 16:44:35.695 * Module 'timeseries' loaded from /usr/local/lib/redis/modules//redistimeseries.so
+profile-1  | 1:M 10 Nov 2026 16:44:35.723 * <ReJSON> Created new data type 'ReJSON-RL'
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * <ReJSON> version: 81000 git sha: unknown branch: unknown
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * <ReJSON> Exported RedisJSON_V1 API
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * <ReJSON> Exported RedisJSON_V2 API
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * <ReJSON> Exported RedisJSON_V3 API
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * <ReJSON> Exported RedisJSON_V4 API
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * <ReJSON> Exported RedisJSON_V5 API
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * <ReJSON> Exported RedisJSON_V6 API
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * <ReJSON> Exported RedisJSON_V7 API
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * <ReJSON> Exported RedisJSON_V8 API
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * <ReJSON> Enabled diskless replication
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * <ReJSON> Initialized shared string cache, thread safe: true.
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * Module 'ReJSON' loaded from /usr/local/lib/redis/modules//rejson.so
+profile-1  | 1:M 10 Nov 2026 16:44:35.724 * <search> Acquired RedisJSON_V8 API
+profile-1  | 1:M 10 Nov 2026 16:44:35.725 * Server initialized
+profile-1  | 1:M 10 Nov 2026 16:44:35.726 * BGSAVE done, 0 keys saved, 0 keys skipped, 89 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:44:35.729 * Creating AOF base file appendonly.aof.1.base.rdb on server start
+profile-1  | 1:M 10 Nov 2026 16:44:35.733 * Creating AOF incr file appendonly.aof.1.incr.aof on server start
+profile-1  | 1:M 10 Nov 2026 16:44:35.733 * Ready to accept connections tcp
+profile-1  | 1:M 10 Nov 2026 16:44:35.733 # WARNING: Redis does not require authentication and is not protected by network restrictions. Redis will accept connections from any IP address on any network interface.
+profile-1  | 1:M 10 Nov 2026 16:44:36.817 * BGSAVE done, 4 keys saved, 0 keys skipped, 128 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:44:36.820 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:44:52.314 * BGSAVE done, 4 keys saved, 0 keys skipped, 128 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:44:52.320 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:44:53.111 * BGSAVE done, 4 keys saved, 0 keys skipped, 128 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:44:53.118 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:44:53.911 * BGSAVE done, 4 keys saved, 0 keys skipped, 128 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:44:53.918 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:45:10.260 * BGSAVE done, 4 keys saved, 0 keys skipped, 128 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:45:10.267 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:45:11.011 * BGSAVE done, 4 keys saved, 0 keys skipped, 128 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:45:11.017 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:45:11.811 * BGSAVE done, 4 keys saved, 0 keys skipped, 128 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:45:11.815 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:45:12.611 * BGSAVE done, 4 keys saved, 0 keys skipped, 128 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:45:12.620 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:45:13.360 * BGSAVE done, 4 keys saved, 0 keys skipped, 128 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:45:13.365 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:45:14.160 * BGSAVE done, 4 keys saved, 0 keys skipped, 129 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:45:14.167 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:45:14.959 * BGSAVE done, 4 keys saved, 0 keys skipped, 129 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:45:14.963 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:45:15.957 * BGSAVE done, 4 keys saved, 0 keys skipped, 129 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:45:15.962 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:45:16.758 * BGSAVE done, 4 keys saved, 0 keys skipped, 129 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:45:16.766 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:47:50.707 * BGSAVE done, 5 keys saved, 0 keys skipped, 147 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:47:50.709 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:47:51.443 * BGSAVE done, 5 keys saved, 0 keys skipped, 147 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:47:51.445 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:48:01.841 * BGSAVE done, 5 keys saved, 0 keys skipped, 147 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:48:01.846 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:48:02.598 * BGSAVE done, 5 keys saved, 0 keys skipped, 147 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:48:02.602 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:48:03.395 * BGSAVE done, 5 keys saved, 0 keys skipped, 147 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:48:03.398 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:48:04.189 * BGSAVE done, 5 keys saved, 0 keys skipped, 147 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:48:04.193 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:51:39.279 * BGSAVE done, 5 keys saved, 0 keys skipped, 150 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:51:39.281 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:51:55.660 * BGSAVE done, 5 keys saved, 0 keys skipped, 150 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:51:55.666 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:51:56.447 * BGSAVE done, 5 keys saved, 0 keys skipped, 150 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:51:56.453 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:51:57.253 * BGSAVE done, 5 keys saved, 0 keys skipped, 150 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:51:57.258 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:51:58.504 * BGSAVE done, 5 keys saved, 0 keys skipped, 150 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:51:58.511 * DB saved on disk
+profile-1  | 1:M 10 Nov 2026 16:51:59.451 * BGSAVE done, 5 keys saved, 0 keys skipped, 150 bytes written.
+profile-1  | 1:M 10 Nov 2026 16:51:59.456 * DB saved on disk
