@@ -1,0 +1,11 @@
+services:
+  rackula-api:
+    image: ghcr.io/rackulalives/rackula-api:latest
+    ports:
+      - "3001:3001"
+    environment:
+      - RACKULA_TRUST_PROXY=true
+      - RACKULA_AUTH_SESSION_IDLE_TIMEOUT_SECONDS=1800
+      - RACKULA_AUTH_SESSION_COOKIE_SAMESITE=Lax
+      - RACKULA_AUTH_MODE=none
+    restart: always
