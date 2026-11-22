@@ -1,0 +1,7 @@
+---
+- name: Test Remote Node Connectivity
+  hosts: nodes
+  become: yes
+  tasks:
+    - name: Ping test using ansible win/linux module
+      ping:

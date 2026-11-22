@@ -1,0 +1,22 @@
+---
+- name: Install, configure, and deploy custom page for Nginx
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ensure Nginx is installed
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Ensure Nginx service is started and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Deploy custom index page using template
+      template:
+        src: index.html.j2
+        dest: /var/www/html/index.html
+        mode: '0644'
