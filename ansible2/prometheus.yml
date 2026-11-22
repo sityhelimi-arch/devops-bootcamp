@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'node_exporter_nodes'
+    static_configs:
+      - targets: ['47.129.87.29:9100', '47.129.166.248:9100']
