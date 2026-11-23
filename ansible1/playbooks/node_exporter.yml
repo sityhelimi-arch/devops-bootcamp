@@ -1,0 +1,21 @@
+---
+- name: Install and Start Node Exporter
+  hosts: nodes
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install Node Exporter
+      apt:
+        name: prometheus-node-exporter
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Enable and start node_exporter service
+      systemd:
+        name: prometheus-node-exporter
+        enabled: yes
+        state: started
